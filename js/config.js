@@ -5,6 +5,8 @@ export const CONFIG = Object.freeze({
   timeLimitSec: 10 * 60,
   // 残り時間がこの秒数を切ったらタイマーを警告色にする
   warnAtSec: 60,
+  // 答えを選んでから次の問題に進むまでの時間（ミリ秒）
+  autoAdvanceMs: 450,
   // 出題する問題数（問題データの件数より多い値は自動で切り詰める）
   questionCount: 50,
   // 毎回の出題順・選択肢の順番をシャッフルするか

@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>スマイルスタディ 講師研修テスト</title>
     <link rel="icon" href="assets/images/logo-mark.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" />
     <link rel="stylesheet" href="css/variables.css" />
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/components.css" />
@@ -13,38 +16,61 @@
   </head>
   <body>
     <header class="site-header">
-      <img class="site-header__logo" data-image="logoLockup" alt="1対1 スマイルスタディ" />
+      <!-- ロゴを押すとスタート画面に戻る（js/ui/header.js） -->
+      <a class="site-header__home" href="./" data-action="home" aria-label="スタート画面に戻る">
+        <img class="site-header__logo" data-image="logoLockup" alt="1対1 スマイルスタディ" />
+      </a>
     </header>
 
     <main class="container">
       <!-- スタート画面 -->
       <section id="screen-start" class="screen" hidden>
         <div class="card hero">
-          <img class="character-upper" data-image="characterUpper" alt="スマるん" />
+          <p class="hero__eyebrow">TEACHER TRAINING</p>
           <h1 class="hero__title">講師研修テスト</h1>
-          <p class="hero__speech">研修ナビゲーターのスマるんです。<br />最後の確認テスト、がんばろう！</p>
-          <p class="hero__lead">研修資料と研修動画の内容から出題します。<br />満点がとれるまで、何度でも挑戦しよう！</p>
-          <ul class="rules">
-            <li>問題数：<strong data-text="questionCount"></strong>問</li>
-            <li>制限時間：<strong data-text="timeLimit"></strong></li>
-            <li>時間切れになると、その時点の回答で採点します</li>
-            <li>結果は ○ × だけ表示されます（記録は残りません）</li>
+          <div class="hero__navi">
+            <img class="character-upper" data-image="characterUpper" alt="スマるん" />
+            <p class="speech">研修ナビゲーターのスマるんです。<br />最後の確認テスト、がんばろう！</p>
+          </div>
+          <ul class="stat-chips">
+            <li class="stat-chip"><span class="stat-chip__value" data-text="questionCount"></span><span class="stat-chip__label">問題数</span></li>
+            <li class="stat-chip"><span class="stat-chip__value" data-text="timeLimit"></span><span class="stat-chip__label">制限時間</span></li>
+            <li class="stat-chip"><span class="stat-chip__value">満点</span><span class="stat-chip__label">で合格</span></li>
           </ul>
-          <button type="button" class="button button--primary" data-action="start">テストをはじめる</button>
+          <ul class="rules">
+            <li>研修資料と研修動画の内容から出題します</li>
+            <li>1問答えると、自動で次の問題に進みます</li>
+            <li>時間切れになると、その時点の回答で採点します</li>
+            <li>結果では、分野ごとの評価と、まちがえた問題の解説が見られます（記録は残りません）</li>
+          </ul>
+          <button type="button" class="button button--primary button--large" data-action="start">テストをはじめる</button>
         </div>
       </section>
 
-      <!-- 出題画面 -->
+      <!-- 出題画面（1問ずつ表示） -->
       <section id="screen-quiz" class="screen" hidden>
         <div class="quiz-bar">
-          <div class="quiz-bar__progress">回答 <span data-role="answered">0</span> / <span data-role="total">0</span></div>
-          <div class="quiz-bar__timer" data-role="timer" aria-live="polite">10:00</div>
+          <div class="quiz-bar__row">
+            <p class="quiz-bar__progress"><span data-role="current">1</span><span class="quiz-bar__of"> / <span data-role="total">0</span></span></p>
+            <p class="quiz-bar__answered">回答済み <span data-role="answered">0</span> 問</p>
+            <p class="timer" data-role="timer" aria-live="polite">10:00</p>
+          </div>
+          <div class="progress" aria-hidden="true"><div class="progress__fill" data-role="progress"></div></div>
         </div>
-        <ol class="question-list" data-role="questions"></ol>
-        <div class="quiz-footer">
-          <p class="quiz-footer__note" data-role="unanswered-note"></p>
-          <button type="button" class="button button--primary" data-action="submit">採点する</button>
-        </div>
+
+        <article class="card question" data-role="question">
+          <div class="question__meta">
+            <span class="badge badge--number" data-role="number"></span>
+            <span class="badge badge--category" data-role="category"></span>
+          </div>
+          <h2 class="question__text" data-role="text"></h2>
+          <ul class="choice-list" data-role="choices"></ul>
+        </article>
+
+        <nav class="quiz-nav">
+          <button type="button" class="button button--ghost" data-action="prev">← 前の問題</button>
+          <button type="button" class="button button--ghost" data-action="submit">ここで採点する</button>
+        </nav>
       </section>
 
       <!-- 結果画面 -->
@@ -52,11 +78,29 @@
         <div class="card result-summary">
           <img class="character-face" data-image="characterFace" alt="スマるん" />
           <p class="result-summary__label" data-role="headline"></p>
-          <p class="result-summary__score"><span data-role="score">0</span> / <span data-role="total">0</span></p>
+          <p class="result-summary__score"><span data-role="score">0</span><span class="result-summary__total"> / <span data-role="total">0</span></span></p>
           <p class="result-summary__message" data-role="message"></p>
-          <button type="button" class="button button--primary" data-action="retry">もう一度挑戦する</button>
+          <button type="button" class="button button--primary button--large" data-action="retry">もう一度挑戦する</button>
         </div>
-        <ol class="result-list" data-role="results"></ol>
+
+        <div class="card analysis">
+          <h2 class="section-title">分野ごとの評価</h2>
+          <div class="analysis__body">
+            <div class="analysis__chart" data-role="radar"></div>
+            <ul class="area-list" data-role="areas"></ul>
+          </div>
+          <p class="analysis__comment" data-role="comment"></p>
+        </div>
+
+        <div class="review" data-role="review-wrong">
+          <h2 class="section-title">まちがえた問題の解説 <span class="section-title__count" data-role="wrong-count"></span></h2>
+          <ol class="review-list" data-role="wrong-list"></ol>
+        </div>
+
+        <details class="card review-correct">
+          <summary>正解した問題を見る <span data-role="correct-count"></span></summary>
+          <ol class="result-list" data-role="correct-list"></ol>
+        </details>
       </section>
     </main>
   </body>

@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { createAttempt, selectAnswer, countAnswered, grade } from "../js/core/quiz.js";
+import { createAttempt, selectAnswer, countAnswered, nextUnanswered, grade } from "../js/core/quiz.js";
 import { shuffle } from "../js/core/shuffle.js";
 import { formatTime } from "../js/core/timer.js";
 
@@ -89,4 +89,29 @@ test("formatTime は m:ss の形にする", () => {
   assert.equal(formatTime(600), "10:00");
   assert.equal(formatTime(65), "1:05");
   assert.equal(formatTime(0), "0:00");
+});
+
+test("grade は正解・選んだ答え・解説を返す", () => {
+  const questions = SAMPLE.map((q) => ({ ...q, explanation: `${q.id}の解説` }));
+  let attempt = createAttempt(questions, { shuffleQuestions: false, shuffleChoices: false });
+  attempt = selectAnswer(attempt, 0, 1);
+  const [first, second] = grade(attempt).results;
+  assert.equal(first.correct, false);
+  assert.equal(first.selectedText, "3");
+  assert.equal(first.correctText, "2");
+  assert.equal(first.explanation, "q001の解説");
+  assert.equal(first.category, "a");
+  assert.equal(first.image, null);
+  assert.equal(second.selectedText, null);
+});
+
+test("nextUnanswered は次の未回答を探し、最後まで行くと先頭に戻る", () => {
+  let attempt = createAttempt(SAMPLE, { shuffleQuestions: false, shuffleChoices: false });
+  assert.equal(nextUnanswered(attempt, 0), 1);
+  attempt = selectAnswer(attempt, 1, 0);
+  assert.equal(nextUnanswered(attempt, 0), 2);
+  attempt = selectAnswer(attempt, 2, 0);
+  assert.equal(nextUnanswered(attempt, 2), 0);
+  attempt = selectAnswer(attempt, 0, 0);
+  assert.equal(nextUnanswered(attempt, 0), -1);
 });

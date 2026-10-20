@@ -3,7 +3,7 @@ import { shuffle } from "./shuffle.js";
 
 /**
  * 1回分の受験（アテンプト）を作る。
- * @param {Array<{id:string, question:string, choices:string[], answer:number}>} questions
+ * @param {Array<{id:string, category:string, question:string, choices:string[], answer:number, explanation?:string, image?:string}>} questions
  * @param {{count?:number, shuffleQuestions?:boolean, shuffleChoices?:boolean, random?:() => number}} options
  */
 export function createAttempt(questions, options = {}) {
@@ -25,6 +25,8 @@ export function createAttempt(questions, options = {}) {
       id: q.id,
       category: q.category,
       question: q.question,
+      explanation: q.explanation,
+      image: q.image ?? null,
       choices: choices.map((c) => c.text),
       correctIndex: choices.findIndex((c) => c.originalIndex === q.answer),
     };
@@ -57,14 +59,35 @@ export function countAnswered(attempt) {
 
 /** 採点する。未回答は不正解として数える。 */
 export function grade(attempt) {
-  const results = attempt.items.map((item, i) => ({
-    id: item.id,
-    number: i + 1,
-    question: item.question,
-    answered: attempt.selections[i] !== null,
-    correct: attempt.selections[i] === item.correctIndex,
-  }));
+  const results = attempt.items.map((item, i) => {
+    const selected = attempt.selections[i];
+    return {
+      id: item.id,
+      number: i + 1,
+      category: item.category,
+      question: item.question,
+      answered: selected !== null,
+      correct: selected === item.correctIndex,
+      selectedText: selected === null ? null : item.choices[selected],
+      correctText: item.choices[item.correctIndex],
+      explanation: item.explanation,
+      image: item.image,
+    };
+  });
   const score = results.filter((r) => r.correct).length;
   const total = results.length;
   return { results, score, total, isPerfect: total > 0 && score === total };
+}
+
+/**
+ * fromIndex の次にある未回答の問題番号を返す（最後まで行ったら先頭に戻って探す）。
+ * すべて回答済みなら -1。
+ */
+export function nextUnanswered(attempt, fromIndex) {
+  const n = attempt.items.length;
+  for (let step = 1; step <= n; step++) {
+    const i = (fromIndex + step) % n;
+    if (attempt.selections[i] === null) return i;
+  }
+  return -1;
 }

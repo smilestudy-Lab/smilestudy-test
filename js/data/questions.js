@@ -10,6 +10,8 @@
 //   question … 問題文
 //   choices  … 選択肢（2〜4個）
 //   answer   … 正解の選択肢の番号（0 から数える）
+//   explanation … 解説（まちがえたときに結果画面で出す）
+//   image    … 解説といっしょに出すスライド画像（任意。assets/slides/ に置く）
 //
 // 問題を追加・修正したら `npm test` で形のチェックが通ることを確認する。
 
@@ -27,6 +29,7 @@ export const QUESTIONS = [
       "日程調整 → 準備報告 → 授業 → 保護者さんへ届く → 指導報告書",
     ],
     answer: 0,
+    explanation: "授業は「日程調整 → 準備報告 → 授業 → 指導報告書 → 保護者さんへ届く」の順に進みます。指導報告書が保護者さんに届いて、1回の授業が完了です。",
   },
   {
     id: "q003",
@@ -40,6 +43,7 @@ export const QUESTIONS = [
       "Slack・Comiru・Zoom・日程カレンダー",
     ],
     answer: 0,
+    explanation: "研修の前に Notion・Slack・Comiru・日程カレンダーの4つにログインしておきます。LINE や Googleドライブは業務では使いません。",
   },
   {
     id: "q006",
@@ -48,6 +52,7 @@ export const QUESTIONS = [
     question: "保護者さんとのやりとり・指導報告書・振替に使うツールはどれ？",
     choices: ["Comiru", "Slack", "Notion", "日程カレンダー"],
     answer: 0,
+    explanation: "保護者さんとのやりとり、指導報告書、振替は Comiru で行います。社内の連絡は Slack、情報のまとめは Notion です。",
   },
   {
     id: "q009",
@@ -61,6 +66,7 @@ export const QUESTIONS = [
       "ホーム・お知らせ・報告書",
     ],
     answer: 0,
+    explanation: "講師でログインすると、日程カレンダーのメニューには「ホーム・カレンダー・生徒管理」の3つが出ます。",
   },
 
   // ── 時間割 ─────────────────────────────────
@@ -71,6 +77,7 @@ export const QUESTIONS = [
     question: "越谷校の平日の授業は？",
     choices: ["17時から3コマ", "14時から5コマ", "16時から4コマ", "18時から2コマ"],
     answer: 0,
+    explanation: "越谷校の平日は17時から3コマです。",
   },
   {
     id: "q012",
@@ -79,6 +86,7 @@ export const QUESTIONS = [
     question: "越谷校の休校日（毎週）は何曜日？",
     choices: ["水曜日", "月曜日", "日曜日", "木曜日"],
     answer: 0,
+    explanation: "越谷校は毎週水曜日が休校日です。",
   },
 
   // ── 予約システムと毎月のサイクル ─────────────────
@@ -94,6 +102,7 @@ export const QUESTIONS = [
       "代表がすべて決めて講師に割り当てる",
     ],
     answer: 0,
+    explanation: "授業の日程は毎月の「予約」で決まります。授業のたびにその場で決めることはしません。",
   },
   {
     id: "q020",
@@ -102,6 +111,7 @@ export const QUESTIONS = [
     question: "生徒さんが翌月の不可コマを登録する締め切りは？",
     choices: ["25日", "20日", "28日", "月末"],
     answer: 0,
+    explanation: "生徒さんは翌月の不可コマを25日までに登録します。そのあと講師が26〜28日に授業を登録します。",
   },
   {
     id: "q021",
@@ -110,6 +120,7 @@ export const QUESTIONS = [
     question: "講師が翌月の授業をカレンダーに登録する期間は？",
     choices: ["26〜28日", "20〜25日", "月末〜1日", "1〜5日"],
     answer: 0,
+    explanation: "講師は26〜28日に翌月の授業をカレンダーに登録します（生徒さんの不可コマ登録が25日に締め切られたあと）。",
   },
   {
     id: "q022",
@@ -118,6 +129,7 @@ export const QUESTIONS = [
     question: "お知らせ担当の講師が「授業日程のお知らせ」を作る締め切りは？",
     choices: ["28日16:00", "25日16:00", "月末22:00", "28日21:50"],
     answer: 0,
+    explanation: "お知らせ担当の講師は、28日16:00までに「授業日程のお知らせ」を作ります。",
   },
   // ── カレンダー登録 ──────────────────────────
   {
@@ -127,6 +139,7 @@ export const QUESTIONS = [
     question: "月のカレンダーから授業を登録する画面へ進むボタンは？",
     choices: ["右上の「編集」", "左上の「☰」", "「予定あり」", "「共有リンクをコピー」"],
     answer: 0,
+    explanation: "月のカレンダー右上の「編集」から、授業を登録する画面へ進みます。",
   },
   {
     id: "q028",
@@ -135,6 +148,7 @@ export const QUESTIONS = [
     question: "「予定あり」と表示されているコマについて正しいものは？",
     choices: ["押せない（登録できない）", "押すと上書き登録できる", "押すと不可コマになる", "押すと削除できる"],
     answer: 0,
+    explanation: "「予定あり」のコマは押せません。すでに予定が入っているので登録できないという意味です。",
   },
   {
     id: "q029",
@@ -148,6 +162,7 @@ export const QUESTIONS = [
       "日付を長押しして「移動」",
     ],
     answer: 0,
+    explanation: "空きコマを押し、種別・科目を選んで「このコマを登録する」を押します。",
   },
 
   // ── お知らせ作成 ─────────────────────────────
@@ -163,6 +178,7 @@ export const QUESTIONS = [
       "Comiruで生徒を登録した講師",
     ],
     answer: 0,
+    explanation: "Notion の生徒情報で、名前に下線が引かれている講師がお知らせ担当です。",
   },
   {
     id: "q034",
@@ -171,6 +187,7 @@ export const QUESTIONS = [
     question: "授業日程のお知らせの「日付」に入れるのは？",
     choices: ["その月の月末", "作成した日", "翌月1日", "最初の授業日"],
     answer: 0,
+    explanation: "授業日程のお知らせの「日付」には、その月の月末を入れます。",
   },
   {
     id: "q035",
@@ -184,6 +201,7 @@ export const QUESTIONS = [
       "保存せずにスクリーンショットを送る",
     ],
     answer: 0,
+    explanation: "お知らせは「確認する」→「保存する」で止めます。公開はせず、月末に管理者が一斉に配信します。",
   },
   {
     id: "q036",
@@ -197,6 +215,7 @@ export const QUESTIONS = [
       "Slackのチャンネルのリンク",
     ],
     answer: 0,
+    explanation: "カレンダーのメニュー（≡）→「生徒管理」→「共有リンクをコピー」で、生徒さん用のリンクを取ります。自分のカレンダーの URL を貼ってはいけません。",
   },
 
   // ── 準備報告と授業 ───────────────────────────
@@ -212,6 +231,7 @@ export const QUESTIONS = [
       "保護者さんへのメール",
     ],
     answer: 0,
+    explanation: "準備報告は Slack の「-5 授業前準備報告」チャンネルに投稿します。",
   },
   {
     id: "q040",
@@ -225,6 +245,7 @@ export const QUESTIONS = [
       "授業のあとの感想",
     ],
     answer: 0,
+    explanation: "準備報告には「生徒名・科目/単元/教材・今日のねらい」を書きます。",
   },
   {
     id: "q042",
@@ -238,6 +259,7 @@ export const QUESTIONS = [
       "導入 → アウトプット → インプット",
     ],
     answer: 0,
+    explanation: "授業は「導入 → インプット → アウトプット」の順で進めます。",
   },
 
   // ── 指導報告書 ──────────────────────────────
@@ -248,6 +270,7 @@ export const QUESTIONS = [
     question: "指導報告書のコメントは何字以上書く？",
     choices: ["300字以上", "100字以上", "120字以上", "500字以上"],
     answer: 0,
+    explanation: "指導報告書のコメントは300字以上書きます（越谷校の研修資料の基準）。",
   },
   {
     id: "q044",
@@ -256,6 +279,7 @@ export const QUESTIONS = [
     question: "指導報告書を公開する締め切りは？",
     choices: ["授業当日の21:50", "授業当日の22:00", "授業の翌日中", "その週の日曜日"],
     answer: 0,
+    explanation: "指導報告書は授業当日の21:50までに公開します。",
   },
   {
     id: "q046",
@@ -269,6 +293,7 @@ export const QUESTIONS = [
       "本日の目標 → 次へのステップ → 成長したポイント → 講師コメント",
     ],
     answer: 0,
+    explanation: "書き方の型は「本日の目標 → 成長したポイント → 次へのステップ → 講師コメント」の順です。",
   },
   {
     id: "q047",
@@ -282,6 +307,7 @@ export const QUESTIONS = [
       "管理者に公開を頼む",
     ],
     answer: 0,
+    explanation: "「公開有無」を「公開」にして保存すると、保護者さんに届きます。下書きのままでは届きません。",
   },
 
   // ── ルール：欠席・振替・日程変更・連絡 ─────────────
@@ -297,6 +323,7 @@ export const QUESTIONS = [
       "理由があればいつでも",
     ],
     answer: 0,
+    explanation: "振替は前日の21時までです。当日は理由を問わず振替できません。",
   },
   {
     id: "q050",
@@ -310,6 +337,7 @@ export const QUESTIONS = [
       "授業は休みになり、コマ給も出ない",
     ],
     answer: 0,
+    explanation: "前日の21時を過ぎているので振替はできません。この場合もコマ給は支払われ、講師は出勤して事務を手伝います。",
   },
   {
     id: "q052",
@@ -323,6 +351,7 @@ export const QUESTIONS = [
       "メール → LINE → 電話",
     ],
     answer: 0,
+    explanation: "まず電話（番号は Notion）、出なければ Comiru、それでも困ったら管理者に相談します。",
   },
   {
     id: "q053",
@@ -336,6 +365,7 @@ export const QUESTIONS = [
       "保護者さんに変更してもらう",
     ],
     answer: 0,
+    explanation: "カレンダーには「移動」機能がありません。授業を削除してから、新しい日程で登録し直します。",
   },
   {
     id: "q054",
@@ -349,6 +379,7 @@ export const QUESTIONS = [
       "Slackのチャンネル",
     ],
     answer: 0,
+    explanation: "保護者さんへの日程の案内は、毎月の「授業日程のお知らせ」だけに書きます。",
   },
   {
     id: "q056",
@@ -362,6 +393,7 @@ export const QUESTIONS = [
       "Notionのコメント",
     ],
     answer: 0,
+    explanation: "業務のふつうの質問は Slack の「#sm-30-越谷-3-遅刻連絡and業務質問」に送ります。",
   },
 
   // ── 研修動画 第1回「理念・MVV・求める人材」 ──────────────
@@ -372,6 +404,8 @@ export const QUESTIONS = [
     question: "スマイルスタディの合言葉は？",
     choices: ["夢・目標を実現する塾", "成績を最短で上げる塾", "楽しく通える塾", "一生ものの学力をつける塾"],
     answer: 0,
+    explanation: "スマイルスタディの合言葉は「夢・目標を実現する塾」です。",
+    image: "assets/slides/video1-004.jpg",
   },
   {
     id: "q102",
@@ -385,6 +419,8 @@ export const QUESTIONS = [
       "講師がすべてを教えきる",
     ],
     answer: 0,
+    explanation: "ミッションは、点数だけでなく「夢を描き、努力し、実現する力」を育てることです。",
+    image: "assets/slides/video1-008.jpg",
   },
   {
     id: "q104",
@@ -393,6 +429,8 @@ export const QUESTIONS = [
     question: "スマイルスタディが大切にする「5つの価値観」に含まれないものは？",
     choices: ["結果だけで判断する", "可能性を信じる", "伴走する", "チームで育てる"],
     answer: 0,
+    explanation: "5つの価値観は「可能性を信じる・課題を正しく見抜く・伴走する・仕組みで支える・チームで育てる」です。「今の成績だけで未来を決めない」が1つ目なので、「結果だけで判断する」は逆の考え方です。",
+    image: "assets/slides/video1-012.jpg",
   },
   {
     id: "q105",
@@ -406,6 +444,8 @@ export const QUESTIONS = [
       "難しい問題を速く解ける人",
     ],
     answer: 0,
+    explanation: "一緒に働きたいのは、生徒の可能性を信じ抜ける人です。",
+    image: "assets/slides/video1-018.jpg",
   },
 
   // ── 研修動画 第2回「授業体制」 ───────────────────
@@ -416,6 +456,8 @@ export const QUESTIONS = [
     question: "1コマの授業時間は？",
     choices: ["80分", "60分", "90分", "50分"],
     answer: 0,
+    explanation: "1日5コマ、1コマ80分です。準備・授業・指導報告書までが1コマで、遅刻しても終了をずらして80分を必ず実施します。",
+    image: "assets/slides/video2-004.jpg",
   },
   {
     id: "q109",
@@ -429,6 +471,8 @@ export const QUESTIONS = [
       "生徒に「わかった」と言ってもらう",
     ],
     answer: 0,
+    explanation: "授業のゴールは、「わかった」で終わらせず「次も自分でできる」に変えることです。",
+    image: "assets/slides/video2-006.jpg",
   },
   {
     id: "q110",
@@ -442,6 +486,8 @@ export const QUESTIONS = [
       "準備 → 実践 → 報告 → 記録",
     ],
     answer: 0,
+    explanation: "毎回の授業は「準備 → 報告 → 実践 → 記録」のプロセスで回します。",
+    image: "assets/slides/video2-008.jpg",
   },
   {
     id: "q111",
@@ -450,6 +496,8 @@ export const QUESTIONS = [
     question: "「3つの学び」のうち、テスト対策の役割は？",
     choices: ["得点につなげる", "土台をつくる", "弱点を補う", "生活習慣を整える"],
     answer: 0,
+    explanation: "通常授業は「土台をつくる」、講習授業は「弱点を補う」、テスト対策は「得点につなげる」役割です。",
+    image: "assets/slides/video2-010.jpg",
   },
   {
     id: "q112",
@@ -463,6 +511,8 @@ export const QUESTIONS = [
       "生徒がやりたい単元だけをやる",
     ],
     answer: 0,
+    explanation: "逆算型は、志望校・目標点から逆算して「今やるべきこと」だけに絞り込む授業設計です。",
+    image: "assets/slides/video2-012.jpg",
   },
   {
     id: "q113",
@@ -471,6 +521,8 @@ export const QUESTIONS = [
     question: "学びを支える「4つのSC」に含まれないものは？",
     choices: ["Speed Check", "Smile Curriculum", "Smart Coaching", "Self Control"],
     answer: 0,
+    explanation: "4つのSCは Smile Curriculum・Smart Coaching・Self Control・Study Community です。「Speed Check」は含まれません。",
+    image: "assets/slides/video2-014.jpg",
   },
 
   // ── 研修動画 第3回「ツールとSlack文化」 ───────────────
@@ -481,6 +533,8 @@ export const QUESTIONS = [
     question: "スマイルスタディのツールは、どのツールを中心につながっている？",
     choices: ["Notion", "Slack", "Comiru", "LINE"],
     answer: 0,
+    explanation: "スマイルスタディのツールは Notion を中心につながっています。",
+    image: "assets/slides/video3-004.jpg",
   },
   {
     id: "q116",
@@ -494,6 +548,8 @@ export const QUESTIONS = [
       "保護者さんとも直接やりとりするため",
     ],
     answer: 0,
+    explanation: "Slack を使うのは、情報を個人のトークに閉じ込めず、組織の資産にするためです。",
+    image: "assets/slides/video3-030.jpg",
   },
   {
     id: "q118",
@@ -502,6 +558,8 @@ export const QUESTIONS = [
     question: "Slackの全体お知らせには、いつまでにリアクションする？",
     choices: ["24時間以内", "1週間以内", "次に出勤した日", "気づいたときでよい"],
     answer: 0,
+    explanation: "全体お知らせには24時間以内にリアクションします。",
+    image: "assets/slides/video3-034.jpg",
   },
   {
     id: "q120",
@@ -515,6 +573,8 @@ export const QUESTIONS = [
       "すべてDMで依頼する",
     ],
     answer: 0,
+    explanation: "計画的な依頼は Notion のタスク、今すぐ動いてほしい連絡は Slack で使い分けます。",
+    image: "assets/slides/video3-036.jpg",
   },
 
   // ── 研修動画 第4回「報酬と評価」 ───────────────────
@@ -525,6 +585,8 @@ export const QUESTIONS = [
     question: "給与を構成する5つの項目に含まれないものは？",
     choices: ["皆勤手当", "コマ給", "生徒管理手当", "Notionタスク手当"],
     answer: 0,
+    explanation: "給与は「コマ給 + 生徒管理手当 + 事務・残業手当 + Notionタスク手当 + 交通費」の5つの合計です。「皆勤手当」はありません。",
+    image: "assets/slides/video4-006.jpg",
   },
   {
     id: "q122",
@@ -533,6 +595,8 @@ export const QUESTIONS = [
     question: "コマ給は何に応じて上がる？",
     choices: ["これまでに担当した総コマ数", "勤続年数", "生徒のテストの点数", "担当している生徒の人数"],
     answer: 0,
+    explanation: "コマ給は、これまでに担当した総コマ数に応じて上がります。",
+    image: "assets/slides/video4-008.jpg",
   },
   {
     id: "q123",
@@ -546,6 +610,8 @@ export const QUESTIONS = [
       "月に一律5,000円",
     ],
     answer: 0,
+    explanation: "交通費は公共交通機関の実費で、往復1日400円までです。",
+    image: "assets/slides/video4-010.jpg",
   },
   {
     id: "q125",
@@ -559,6 +625,8 @@ export const QUESTIONS = [
       "勤続1年以上であること",
     ],
     answer: 0,
+    explanation: "全ランク共通の絶対条件は、直近6か月の遅刻・代講が3回未満であることです。",
+    image: "assets/slides/video4-012.jpg",
   },
   {
     id: "q126",
@@ -567,6 +635,8 @@ export const QUESTIONS = [
     question: "給与が振り込まれるのはいつ？",
     choices: ["翌月20日", "当月末", "翌月10日", "翌月末"],
     answer: 0,
+    explanation: "給与は翌月20日に振り込まれます。",
+    image: "assets/slides/video4-020.jpg",
   },
   {
     id: "q127",
@@ -580,5 +650,7 @@ export const QUESTIONS = [
       "できていないところを記録に残すこと",
     ],
     answer: 0,
+    explanation: "評価は罰するためではなく、課題を早く見つけて改善するためのものです。",
+    image: "assets/slides/video4-016.jpg",
   },
 ];

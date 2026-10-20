@@ -1,24 +1,32 @@
 /* 色・文字・余白の共通値。ブランドカラーはロゴの緑とえんぴつのオレンジ */
 :root {
   --color-brand: #7dc11f;
-  --color-brand-dark: #5a9a0c;
+  --color-brand-dark: #4f8a0b;
+  --color-brand-soft: #eef7e0;
   --color-accent: #f58220;
-  --color-text: #2e231b;
-  --color-text-muted: #6b5e52;
-  --color-bg: #f6f8f1;
+  --color-accent-dark: #d96a0c;
+  --color-accent-soft: #fff1e3;
+  --color-text: #2b2620;
+  --color-text-muted: #77695c;
+  --color-bg: #f7f5ef;
   --color-surface: #ffffff;
-  --color-border: #e1e6d6;
+  --color-border: #ebe6da;
   --color-correct: #2f9e44;
+  --color-correct-soft: #e8f6eb;
   --color-wrong: #e03131;
+  --color-wrong-soft: #fdecec;
   --color-warning: #e5482a;
 
-  --font-base: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
-  --radius: 14px;
-  --shadow: 0 2px 10px rgba(46, 35, 27, 0.08);
+  --font-base: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
+  --font-num: "Zen Maru Gothic", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  --radius: 20px;
+  --radius-small: 14px;
+  --shadow: 0 1px 2px rgba(43, 38, 32, 0.04), 0 8px 24px rgba(43, 38, 32, 0.07);
+  --shadow-hover: 0 2px 4px rgba(43, 38, 32, 0.06), 0 12px 28px rgba(43, 38, 32, 0.12);
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 16px;
   --space-4: 24px;
   --space-5: 40px;
-  --container: 760px;
+  --container: 720px;
 }
