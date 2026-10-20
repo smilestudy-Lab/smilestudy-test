@@ -1,108 +1,244 @@
 /* 画面ごとのレイアウト */
 
-/* スタート画面 */
+.screen {
+  animation: screen-in 0.35s ease-out both;
+}
+
+@keyframes screen-in {
+  from { opacity: 0; transform: translateY(8px); }
+}
+
+/* ── スタート画面 ───────────────────────── */
 .hero {
   text-align: center;
+  padding: var(--space-5) var(--space-4);
+}
+
+.hero__eyebrow {
+  margin: 0;
+  font-family: var(--font-num);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  color: var(--color-brand);
 }
 
 .hero__title {
-  margin: 0 0 var(--space-2);
-  font-size: 1.8rem;
-  color: var(--color-brand-dark);
+  margin: 0 0 var(--space-4);
+  font-size: clamp(1.8rem, 6vw, 2.4rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
 }
 
-.hero__speech {
-  display: inline-block;
-  margin: 0 0 var(--space-3);
-  padding: var(--space-2) var(--space-3);
-  background: #fff4e8;
-  border: 2px solid var(--color-accent);
+.hero__navi {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  padding: var(--space-3) var(--space-3) 0;
   border-radius: var(--radius);
-  font-weight: bold;
+  background: linear-gradient(180deg, var(--color-brand-soft), transparent);
 }
 
-.hero__lead {
-  margin: 0 0 var(--space-3);
+.hero__navi .speech {
+  margin-bottom: var(--space-4);
+}
+
+/* 吹き出しのしっぽ（キャラクターの方を向く） */
+.hero__navi .speech::before {
+  content: "";
+  position: absolute;
+  left: -11px;
+  bottom: 18px;
+  border: 9px solid transparent;
+  border-right-color: var(--color-brand);
+  border-left: 0;
+}
+
+/* スマホでは、吹き出しをスマるんの上に置く */
+@media (max-width: 559px) {
+  .hero__navi {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .hero__navi .speech {
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  .hero__navi .speech::before {
+    left: 50%;
+    bottom: -11px;
+    transform: translateX(-50%);
+    border: 9px solid transparent;
+    border-top-color: var(--color-brand);
+    border-bottom: 0;
+  }
+}
+
+.stat-chips {
+  list-style: none;
+  margin: 0 0 var(--space-4);
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.stat-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 8px;
+  border-radius: var(--radius-small);
+  background: var(--color-bg);
+}
+
+.stat-chip__value {
+  font-family: var(--font-num);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--color-accent);
+  line-height: 1.3;
+}
+
+.stat-chip__label {
+  font-size: 0.8rem;
   color: var(--color-text-muted);
 }
 
 .rules {
-  text-align: left;
-  display: inline-block;
-  margin: 0 0 var(--space-4);
-  padding-left: 1.2em;
-}
-
-/* 出題画面 */
-.quiz-bar {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: var(--space-2) var(--space-3);
-  margin-bottom: var(--space-3);
-}
-
-.quiz-bar__timer {
-  font-size: 1.5rem;
-  font-weight: bold;
-  font-variant-numeric: tabular-nums;
-  color: var(--color-brand-dark);
-}
-
-.quiz-bar__timer.is-warning {
-  color: var(--color-warning);
-}
-
-.question-list {
   list-style: none;
-  margin: 0;
+  margin: 0 auto var(--space-4);
   padding: 0;
+  max-width: 30em;
+  text-align: left;
   display: grid;
-  gap: var(--space-3);
-}
-
-.question__number {
-  margin: 0;
-  font-weight: bold;
-  color: var(--color-accent);
-}
-
-.question__text {
-  margin: 0 0 var(--space-3);
-  font-weight: bold;
-}
-
-.quiz-footer {
-  text-align: center;
-  margin-top: var(--space-4);
-}
-
-.quiz-footer__note {
+  gap: 6px;
+  font-size: 0.92rem;
   color: var(--color-text-muted);
 }
 
-/* 結果画面 */
+.rules li {
+  display: flex;
+  gap: 8px;
+}
+
+.rules li::before {
+  content: "✓";
+  flex: none;
+  font-weight: 900;
+  color: var(--color-brand);
+}
+
+/* ── 出題画面 ───────────────────────────── */
+.quiz-bar {
+  position: sticky;
+  top: 61px;
+  z-index: 10;
+  margin-bottom: var(--space-3);
+  padding: 10px 16px 12px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  box-shadow: var(--shadow);
+}
+
+.quiz-bar__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: 8px;
+}
+
+.quiz-bar__progress {
+  margin: 0;
+  font-family: var(--font-num);
+  font-size: 1.3rem;
+  font-weight: 900;
+}
+
+.quiz-bar__of {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+.quiz-bar__answered {
+  margin: 0 auto 0 0;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+.question {
+  padding: var(--space-4);
+}
+
+.question.is-entering {
+  animation: question-in 0.3s ease-out both;
+}
+
+@keyframes question-in {
+  from { opacity: 0; transform: translateX(16px); }
+}
+
+.question__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: var(--space-3);
+}
+
+.question__text {
+  margin: 0 0 var(--space-4);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.quiz-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-3);
+}
+
+/* ── 結果画面 ───────────────────────────── */
+#screen-result {
+  display: grid;
+  gap: var(--space-4);
+}
+
 .result-summary {
   text-align: center;
-  margin-bottom: var(--space-3);
+  padding: var(--space-5) var(--space-4);
+  background:
+    radial-gradient(circle at 50% 0%, var(--color-accent-soft), transparent 70%),
+    var(--color-surface);
+}
+
+#screen-result.is-perfect .result-summary {
+  background:
+    radial-gradient(circle at 50% 0%, var(--color-brand-soft), transparent 70%),
+    var(--color-surface);
 }
 
 .result-summary__label {
   margin: 0;
-  font-weight: bold;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
 }
 
 .result-summary__score {
   margin: 0;
-  font-size: 2.6rem;
-  font-weight: bold;
+  font-family: var(--font-num);
+  font-size: 3.6rem;
+  font-weight: 900;
+  line-height: 1.2;
   color: var(--color-accent);
 }
 
@@ -110,42 +246,170 @@
   color: var(--color-correct);
 }
 
-.result-list {
+.result-summary__total {
+  font-size: 1.4rem;
+  color: var(--color-text-muted);
+}
+
+.result-summary__message {
+  margin: var(--space-2) 0 var(--space-4);
+}
+
+.analysis__body {
+  display: grid;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.analysis__chart {
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+.area-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  background: var(--color-surface);
+  display: grid;
+  gap: 6px;
+}
+
+.area-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--color-bg);
+  font-size: 0.9rem;
+}
+
+.area-row__label {
+  font-weight: 700;
+}
+
+.area-row__stars {
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+}
+
+.area-row__count {
+  min-width: 3em;
+  text-align: right;
+  font-family: var(--font-num);
+  color: var(--color-text-muted);
+}
+
+.analysis__comment {
+  margin: var(--space-3) 0 0;
+  padding: 12px 16px;
+  border-radius: var(--radius-small);
+  background: var(--color-accent-soft);
+  font-weight: 700;
+}
+
+/* まちがえた問題の解説 */
+.review-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-3);
+}
+
+.review-item__head {
+  display: flex;
+  gap: 8px;
+  margin-bottom: var(--space-2);
+}
+
+.review-item__question {
+  margin: 0 0 var(--space-3);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.answer-compare {
+  margin: 0 0 var(--space-3);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 12px;
+  align-items: start;
+}
+
+.answer-compare dt {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  padding-top: 7px;
+}
+
+.answer-compare dd {
+  margin: 0;
+  padding: 4px 12px;
+  border-radius: 10px;
+}
+
+.answer-compare__yours {
+  background: var(--color-wrong-soft);
+  color: var(--color-wrong);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+.answer-compare__correct {
+  background: var(--color-correct-soft);
+  color: var(--color-correct);
+  font-weight: 700;
+}
+
+.review-item__explanation {
+  margin: 0;
+  padding-left: 14px;
+  border-left: 3px solid var(--color-brand);
+}
+
+.review-item__figure {
+  margin: var(--space-3) 0 0;
+}
+
+.review-item__figure img {
+  width: 100%;
+  border-radius: 12px;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius);
+}
+
+.review-item__figure figcaption {
+  margin-top: 4px;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-align: right;
+}
+
+/* 正解した問題（たたんでおく） */
+.review-correct summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.result-list {
+  list-style: none;
+  margin: var(--space-3) 0 0;
+  padding: 0;
 }
 
 .result-row {
   display: grid;
-  grid-template-columns: 2.2em 4.5em 1fr;
-  align-items: start;
+  grid-template-columns: 2em 1fr;
   gap: var(--space-2);
-  padding: 10px 14px;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.result-row:last-child {
-  border-bottom: none;
+  padding: 8px 0;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.92rem;
 }
 
 .result-row__mark {
-  font-size: 1.3rem;
-  font-weight: bold;
-  line-height: 1.3;
-}
-
-.result-row.is-correct .result-row__mark {
+  font-weight: 900;
   color: var(--color-correct);
-}
-
-.result-row.is-wrong .result-row__mark {
-  color: var(--color-wrong);
-}
-
-.result-row__number {
-  color: var(--color-text-muted);
 }

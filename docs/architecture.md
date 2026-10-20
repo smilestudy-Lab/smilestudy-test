@@ -12,17 +12,22 @@ css/
 js/
   main.js               入口。下の部品をつなぐだけ
   config.js             制限時間・問題数・画像などの設定
-  data/questions.js     問題データ
+  data/questions.js     問題データ（解説・スライド画像つき）
+  data/areas.js         五角形グラフの5分野と、どの category を入れるか
   core/                 テストの中身（画面に触れない）
     quiz.js             出題・解答・採点
+    analysis.js         分野ごとの集計と5段階評価
     timer.js            制限時間のカウントダウン
     shuffle.js          並べ替え
   ui/                   画面の表示（テストの中身は持たない）
     dom.js              画面操作の共通部品
+    header.js           ロゴを押したらスタート画面に戻る
     startScreen.js      スタート画面
-    quizScreen.js       出題画面
-    resultScreen.js     結果画面
+    quizScreen.js       出題画面（1問ずつ）
+    resultScreen.js     結果画面（点数・五角形グラフ・解説）
+    radarChart.js       五角形グラフ（SVG）
 assets/images/          ロゴ・スマるんの画像
+assets/slides/          解説で出すスライド画像
 tests/                  自動テスト（npm test）
 ```
 
@@ -51,4 +56,5 @@ config.js / data/questions.js   ← 「何を」出すか（データ）
 | 新しい画面（例：解説画面） | `js/ui/〇〇Screen.js` を作り、`index.html` に section を足し、`main.js` でつなぐ |
 | 採点や出題のルール | `js/core/` |
 | 新しい設定値 | `js/config.js` |
+| 分野の分け方・評価の基準 | `js/data/areas.js`・`js/core/analysis.js` |
 | 問題の種類（例：画像つき問題） | `js/data/questions.js` の形を広げ、`tests/questions.test.js` のチェックも合わせて直す |
