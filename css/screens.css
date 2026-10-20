@@ -33,6 +33,12 @@
   padding-left: 1.2em;
 }
 
+/* 横幅が広い画面でもボタンをルールの下に置く */
+.hero .button {
+  display: block;
+  margin: 0 auto;
+}
+
 /* 出題画面 */
 .quiz-bar {
   position: sticky;

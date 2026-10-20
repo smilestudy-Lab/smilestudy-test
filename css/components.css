@@ -32,9 +32,9 @@
   background: #e06f10;
 }
 
-.character-full {
+.character-upper {
   width: auto;
-  height: 260px;
+  height: 220px;
   margin: 0 auto var(--space-3);
 }
 

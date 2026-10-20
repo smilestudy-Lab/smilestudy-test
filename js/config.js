@@ -12,11 +12,11 @@ export const CONFIG = Object.freeze({
   shuffleChoices: true,
   images: {
     logoLockup: "assets/images/logo-lockup.jpg",
-    // スマるん（研修動画のナビゲーター）。全身はスタート画面、顔は結果画面で使う
-    characterFull: "assets/images/smarun-full.jpg",
+    // スマるん（研修動画のナビゲーター）。腰から上はスタート画面、顔は結果画面で使う
+    characterUpper: "assets/images/smarun-waist.jpg",
     characterFace: "assets/images/smarun-face.jpg",
     // 画像が読めなかったときに代わりに出す画像（「〇〇Fallback」の名前で対応づく）
-    characterFullFallback: "assets/images/logo-mark.jpg",
+    characterUpperFallback: "assets/images/logo-mark.jpg",
     characterFaceFallback: "assets/images/logo-mark.jpg",
   },
 });
