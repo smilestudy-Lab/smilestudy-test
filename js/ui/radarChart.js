@@ -16,7 +16,7 @@ function svg(tag, attrs = {}, text) {
  */
 export function createRadarChart(axes, { maxLevel = 5 } = {}) {
   // 横に分野名を書くので、横長にとる
-  const width = 440;
+  const width = 520;
   const height = 330;
   const cx = width / 2;
   const cy = 172;

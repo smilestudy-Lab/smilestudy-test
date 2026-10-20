@@ -6,6 +6,6 @@ export const AREAS = [
   { id: "philosophy", label: "理念・指導方針", categories: ["理念・MVV", "授業体制"] },
   { id: "schedule", label: "日程・カレンダー", categories: ["時間割", "予約サイクル", "カレンダー登録", "お知らせ作成"] },
   { id: "lesson", label: "授業・報告書", categories: ["全体の流れ", "準備報告と授業", "指導報告書"] },
-  { id: "rules", label: "ルール・連絡", categories: ["ツール", "ツールとSlack文化", "欠席と振替", "日程変更", "連絡ルール"] },
-  { id: "reward", label: "報酬と評価", categories: ["報酬と評価"] },
+  { id: "tools", label: "ツール・Slack", categories: ["ツール", "ツールとSlack文化"] },
+  { id: "rules", label: "欠席・連絡ルール", categories: ["欠席と振替", "日程変更", "連絡ルール"] },
 ];
