@@ -53,8 +53,11 @@ export function createResultScreen(root, { onRetry }) {
     ];
     if (result.image) {
       children.push(el("figure", { class: "review-item__figure" }, [
-        el("img", { src: result.image, alt: `解説スライド：${result.category}`, loading: "lazy" }),
-        el("figcaption", { text: "研修資料より" }),
+        // 小さい画面でも読めるように、押すと元の大きさで開く
+        el("a", { href: result.image, target: "_blank", rel: "noopener" }, [
+          el("img", { src: result.image, alt: `解説スライド：${result.category}`, loading: "lazy" }),
+        ]),
+        el("figcaption", { text: "研修資料より（押すと大きく表示）" }),
       ]));
     }
     return el("li", { class: "card review-item" }, children);
