@@ -30,6 +30,7 @@ export const QUESTIONS = [
     ],
     answer: 0,
     explanation: "授業は「日程調整 → 準備報告 → 授業 → 指導報告書 → 保護者さんへ届く」の順に進みます。指導報告書が保護者さんに届いて、1回の授業が完了です。",
+    image: "assets/slides/miro-01.jpg",
   },
   {
     id: "q003",
@@ -44,6 +45,7 @@ export const QUESTIONS = [
     ],
     answer: 0,
     explanation: "研修の前に Notion・Slack・Comiru・日程カレンダーの4つにログインしておきます。LINE や Googleドライブは業務では使いません。",
+    image: "assets/slides/miro-02.jpg",
   },
   {
     id: "q006",
@@ -53,6 +55,7 @@ export const QUESTIONS = [
     choices: ["Comiru", "Slack", "Notion", "日程カレンダー"],
     answer: 0,
     explanation: "保護者さんとのやりとり、指導報告書、振替は Comiru で行います。社内の連絡は Slack、情報のまとめは Notion です。",
+    image: "assets/slides/miro-02.jpg",
   },
   {
     id: "q009",
@@ -67,6 +70,7 @@ export const QUESTIONS = [
     ],
     answer: 0,
     explanation: "講師でログインすると、日程カレンダーのメニューには「ホーム・カレンダー・生徒管理」の3つが出ます。",
+    image: "assets/slides/miro-02.jpg",
   },
 
   // ── 時間割 ─────────────────────────────────
@@ -78,6 +82,7 @@ export const QUESTIONS = [
     choices: ["17時から3コマ", "14時から5コマ", "16時から4コマ", "18時から2コマ"],
     answer: 0,
     explanation: "越谷校の平日は17時から3コマです。",
+    image: "assets/slides/miro-03.jpg",
   },
   {
     id: "q012",
@@ -87,6 +92,7 @@ export const QUESTIONS = [
     choices: ["水曜日", "月曜日", "日曜日", "木曜日"],
     answer: 0,
     explanation: "越谷校は毎週水曜日が休校日です。",
+    image: "assets/slides/miro-03.jpg",
   },
 
   // ── 予約システムと毎月のサイクル ─────────────────
@@ -103,6 +109,7 @@ export const QUESTIONS = [
     ],
     answer: 0,
     explanation: "授業の日程は毎月の「予約」で決まります。授業のたびにその場で決めることはしません。",
+    image: "assets/slides/miro-04.jpg",
   },
   {
     id: "q020",
@@ -112,6 +119,7 @@ export const QUESTIONS = [
     choices: ["25日", "20日", "28日", "月末"],
     answer: 0,
     explanation: "生徒さんは翌月の不可コマを25日までに登録します。そのあと講師が26〜28日に授業を登録します。",
+    image: "assets/slides/miro-05.jpg",
   },
   {
     id: "q021",
@@ -121,6 +129,7 @@ export const QUESTIONS = [
     choices: ["26〜28日", "20〜25日", "月末〜1日", "1〜5日"],
     answer: 0,
     explanation: "講師は26〜28日に翌月の授業をカレンダーに登録します（生徒さんの不可コマ登録が25日に締め切られたあと）。",
+    image: "assets/slides/miro-05.jpg",
   },
   {
     id: "q022",
@@ -130,6 +139,7 @@ export const QUESTIONS = [
     choices: ["28日16:00", "25日16:00", "月末22:00", "28日21:50"],
     answer: 0,
     explanation: "お知らせ担当の講師は、28日16:00までに「授業日程のお知らせ」を作ります。",
+    image: "assets/slides/miro-05.jpg",
   },
   // ── カレンダー登録 ──────────────────────────
   {
@@ -140,6 +150,7 @@ export const QUESTIONS = [
     choices: ["右上の「編集」", "左上の「☰」", "「予定あり」", "「共有リンクをコピー」"],
     answer: 0,
     explanation: "月のカレンダー右上の「編集」から、授業を登録する画面へ進みます。",
+    image: "assets/slides/miro-07.jpg",
   },
   {
     id: "q028",
@@ -149,6 +160,7 @@ export const QUESTIONS = [
     choices: ["押せない（登録できない）", "押すと上書き登録できる", "押すと不可コマになる", "押すと削除できる"],
     answer: 0,
     explanation: "「予定あり」のコマは押せません。すでに予定が入っているので登録できないという意味です。",
+    image: "assets/slides/miro-09.jpg",
   },
   {
     id: "q029",
@@ -163,6 +175,7 @@ export const QUESTIONS = [
     ],
     answer: 0,
     explanation: "空きコマを押し、種別・科目を選んで「このコマを登録する」を押します。",
+    image: "assets/slides/miro-09.jpg",
   },
 
   // ── お知らせ作成 ─────────────────────────────
@@ -179,6 +192,7 @@ export const QUESTIONS = [
     ],
     answer: 0,
     explanation: "Notion の生徒情報で、名前に下線が引かれている講師がお知らせ担当です。",
+    image: "assets/slides/miro-10-2.jpg",
   },
   {
     id: "q034",
@@ -188,6 +202,7 @@ export const QUESTIONS = [
     choices: ["その月の月末", "作成した日", "翌月1日", "最初の授業日"],
     answer: 0,
     explanation: "授業日程のお知らせの「日付」には、その月の月末を入れます。",
+    image: "assets/slides/miro-10-3.jpg",
   },
   {
     id: "q035",
@@ -202,6 +217,7 @@ export const QUESTIONS = [
     ],
     answer: 0,
     explanation: "お知らせは「確認する」→「保存する」で止めます。公開はせず、月末に管理者が一斉に配信します。",
+    image: "assets/slides/miro-10-3.jpg",
   },
   {
     id: "q036",
@@ -216,6 +232,7 @@ export const QUESTIONS = [
     ],
     answer: 0,
     explanation: "カレンダーのメニュー（≡）→「生徒管理」→「共有リンクをコピー」で、生徒さん用のリンクを取ります。自分のカレンダーの URL を貼ってはいけません。",
+    image: "assets/slides/miro-10-4.jpg",
   },
 
   // ── 準備報告と授業 ───────────────────────────
@@ -232,6 +249,7 @@ export const QUESTIONS = [
     ],
     answer: 0,
     explanation: "準備報告は Slack の「-5 授業前準備報告」チャンネルに投稿します。",
+    image: "assets/slides/miro-11.jpg",
   },
   {
     id: "q040",
@@ -246,6 +264,7 @@ export const QUESTIONS = [
     ],
     answer: 0,
     explanation: "準備報告には「生徒名・科目/単元/教材・今日のねらい」を書きます。",
+    image: "assets/slides/miro-11.jpg",
   },
   {
     id: "q042",
@@ -260,6 +279,7 @@ export const QUESTIONS = [
     ],
     answer: 0,
     explanation: "授業は「導入 → インプット → アウトプット」の順で進めます。",
+    image: "assets/slides/miro-11.jpg",
   },
 
   // ── 指導報告書 ──────────────────────────────
@@ -271,6 +291,7 @@ export const QUESTIONS = [
     choices: ["300字以上", "100字以上", "120字以上", "500字以上"],
     answer: 0,
     explanation: "指導報告書のコメントは300字以上書きます（越谷校の研修資料の基準）。",
+    image: "assets/slides/miro-12.jpg",
   },
   {
     id: "q044",
@@ -280,6 +301,7 @@ export const QUESTIONS = [
     choices: ["授業当日の21:50", "授業当日の22:00", "授業の翌日中", "その週の日曜日"],
     answer: 0,
     explanation: "指導報告書は授業当日の21:50までに公開します。",
+    image: "assets/slides/miro-12.jpg",
   },
   {
     id: "q046",
@@ -294,6 +316,7 @@ export const QUESTIONS = [
     ],
     answer: 0,
     explanation: "書き方の型は「本日の目標 → 成長したポイント → 次へのステップ → 講師コメント」の順です。",
+    image: "assets/slides/miro-14.jpg",
   },
   {
     id: "q047",
@@ -308,6 +331,7 @@ export const QUESTIONS = [
     ],
     answer: 0,
     explanation: "「公開有無」を「公開」にして保存すると、保護者さんに届きます。下書きのままでは届きません。",
+    image: "assets/slides/miro-15.jpg",
   },
 
   // ── ルール：欠席・振替・日程変更・連絡 ─────────────
@@ -324,6 +348,7 @@ export const QUESTIONS = [
     ],
     answer: 0,
     explanation: "振替は前日の21時までです。当日は理由を問わず振替できません。",
+    image: "assets/slides/miro-16.jpg",
   },
   {
     id: "q050",
@@ -338,6 +363,7 @@ export const QUESTIONS = [
     ],
     answer: 0,
     explanation: "前日の21時を過ぎているので振替はできません。この場合もコマ給は支払われ、講師は出勤して事務を手伝います。",
+    image: "assets/slides/miro-16.jpg",
   },
   {
     id: "q052",
@@ -352,6 +378,7 @@ export const QUESTIONS = [
     ],
     answer: 0,
     explanation: "まず電話（番号は Notion）、出なければ Comiru、それでも困ったら管理者に相談します。",
+    image: "assets/slides/miro-17.jpg",
   },
   {
     id: "q053",
@@ -366,6 +393,7 @@ export const QUESTIONS = [
     ],
     answer: 0,
     explanation: "カレンダーには「移動」機能がありません。授業を削除してから、新しい日程で登録し直します。",
+    image: "assets/slides/miro-17.jpg",
   },
   {
     id: "q054",
@@ -380,6 +408,7 @@ export const QUESTIONS = [
     ],
     answer: 0,
     explanation: "保護者さんへの日程の案内は、毎月の「授業日程のお知らせ」だけに書きます。",
+    image: "assets/slides/miro-17-2.jpg",
   },
   {
     id: "q056",
@@ -394,6 +423,7 @@ export const QUESTIONS = [
     ],
     answer: 0,
     explanation: "業務のふつうの質問は Slack の「#sm-30-越谷-3-遅刻連絡and業務質問」に送ります。",
+    image: "assets/slides/miro-17-2.jpg",
   },
 
   // ── 研修動画 第1回「理念・MVV・求める人材」 ──────────────
